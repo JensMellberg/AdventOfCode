@@ -24,6 +24,11 @@ namespace AdventOfCode
 
             if (!fileExists && !testIndex.HasValue)
 			{
+				if (!Directory.Exists(Program.CurrentYearNumber))
+				{
+					Directory.CreateDirectory(Program.CurrentYearNumber);
+				}
+
 				testData = Client.GetStringAsync($"https://adventofcode.com/{Program.CurrentYearNumber}/day/{day}/input").Result;
 				File.WriteAllText(fileName, testData);
 			}
@@ -46,7 +51,12 @@ namespace AdventOfCode
 
 		public static void RetrieveTestData(string day)
 		{
-			var html = Client.GetStringAsync($"https://adventofcode.com/{Program.CurrentYearNumber}/day/{day}").Result;
+            if (!Directory.Exists(Program.CurrentYearNumber))
+            {
+                Directory.CreateDirectory(Program.CurrentYearNumber);
+            }
+
+            var html = Client.GetStringAsync($"https://adventofcode.com/{Program.CurrentYearNumber}/day/{day}").Result;
 			const int MinLength = 10;
 			const string StartTag = "<code>";
             const string EndTag = "</code>";
@@ -70,7 +80,7 @@ namespace AdventOfCode
 					continue;
 				}
 
-				Console.Clear();
+                Console.Clear();
 				Console.WriteLine(testData);
 				Console.WriteLine("Keep? Y/N/Abort");
 				var answer = Console.ReadLine();

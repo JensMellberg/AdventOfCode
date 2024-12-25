@@ -92,7 +92,7 @@ namespace AdventOfCode
 
         static bool GetProblemClass(string problemNumber, out Type problem, out object instance)
 		{
-            var classString = $"AdventOfCode2022.{CurrentYear}.Problem" + problemNumber;
+            var classString = $"AdventOfCode.{CurrentYear}.Problem" + problemNumber;
             problem = Type.GetType(classString);
             instance = problem == null ? null : Activator.CreateInstance(problem);
             return problem != null;
