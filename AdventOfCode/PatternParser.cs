@@ -206,6 +206,10 @@ namespace AdventOfCode
                     {
                         return long.Parse(value);
                     }
+					else if (targetType == typeof(char))
+					{
+						return value[0];
+					}
 
 					return value;
                 }
