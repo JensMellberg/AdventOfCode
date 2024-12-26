@@ -17,7 +17,52 @@ namespace AdventOfCode
 			this.Array = array;
 		}
 
-		public IEnumerable<IEnumerable<T>> GetRows()
+		public Matrix<T> Copy()
+		{
+			var newArray = new T[this.ColumnCount, this.RowCount];
+			for (var x = 0; x < this.ColumnCount; x++)
+			{
+                for (var y = 0; y < this.RowCount; y++)
+                {
+					newArray[x, y] = this[x, y];
+                }
+            }
+
+			return new Matrix<T>(newArray);
+		}
+
+        public override bool Equals(object obj)
+        {
+			if (!(obj is Matrix<T> matrix))
+			{
+				return false;
+			}
+
+			if (this.RowCount != matrix.RowCount || this.ColumnCount != matrix.ColumnCount)
+			{
+				return false;
+			}
+
+
+			var allValues = this.AllValues().ToList();
+			var otherValues = matrix.AllValues().ToList();
+			for (var i = 0; i < allValues.Count; i++)
+			{
+				if (!allValues[i].Equals(otherValues[i]))
+				{
+					return false;
+				}
+			}
+
+			return true;
+        }
+
+        public override int GetHashCode()
+        {
+			return this.Array.GetHashCode();
+        }
+
+        public IEnumerable<IEnumerable<T>> GetRows()
 		{
 			for (var i = 0; i < this.RowCount; i++)
 			{

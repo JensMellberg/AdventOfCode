@@ -15,4 +15,6 @@ namespace AdventOfCode
 			this.Contents.Add(ParsableUtils.CreateFromLine<T>(line));
 		}
 	}
+
+	public class StringGroup : ParsableGroup<StringParsable> { }
 }

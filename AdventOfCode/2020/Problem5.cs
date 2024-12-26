@@ -14,7 +14,7 @@ namespace AdventOfCode.Twenty
             foreach (var input in testData)
             {
                 (int lower, int higher) range = (0, 127);
-                var rowInfo = input.Substring(0, 7);
+                var rowInfo = input[..7];
                 foreach (var r in rowInfo)
                 {
                     range = r == 'F' ? KeepLower(range) : KeepHigher(range);
@@ -22,7 +22,7 @@ namespace AdventOfCode.Twenty
 
                 var row = range.lower;
                 range = (0, 7);
-                foreach (var r in input.Substring(7))
+                foreach (var r in input[7..])
                 {
                     range = r == 'L' ? KeepLower(range) : KeepHigher(range);
                 }
