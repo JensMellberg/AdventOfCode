@@ -55,7 +55,7 @@ namespace AdventOfCode
 
         public static string ReplaceAtIndex(this string self, int index, char replacement)
 		{
-			return self.Substring(0, index) + replacement + self[(index + 1)..];
+			return self.Substring(0, index) + replacement + (index < self.Length - 1 ? self[(index + 1)..] : "");
 		}
 
 		public static bool IsHorizontal(this Direction self) => self == Direction.Left || self == Direction.Right;

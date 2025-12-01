@@ -14,10 +14,11 @@ namespace AdventOfCode
             "2022" => "TwentyTwo",
             "2023" => "TwentyThree",
             "2024" => "TwentyFour",
+            "2025" => "TwentyFive",
             _ => null,
         };
 
-        public static string CurrentYearNumber = "2020";
+        public static string CurrentYearNumber = "2025";
 
         static void Main(string[] args)
 		{
