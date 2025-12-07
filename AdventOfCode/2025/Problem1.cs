@@ -33,7 +33,7 @@ namespace AdventOfCode.TwentyFive
                     }
 
                     var stepsLeft = steps - stepsToGetToFirstZero;
-                    zeroPointCount += (stepsLeft) / 100;
+                    zeroPointCount += stepsLeft / 100;
                 }
 
                 current = (current + (steps % 100) * multiplier + 100) % 100;
