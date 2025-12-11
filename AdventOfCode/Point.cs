@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace AdventOfCode
 {
-	public class Point
+	public class Point : Parsable
 	{
 		public int X { get; set; }
 
 		public int Y { get; set; }
+
+		public Point() { }
 
 		public Point(int x, int y)
 		{
@@ -57,5 +58,13 @@ namespace AdventOfCode
 			var tokens = line.Split(',');
 			return new Point(int.Parse(tokens[0]), int.Parse(tokens[1]));
 		}
-	}
+
+        public override void ParseFromLine(string line)
+        {
+            var tokens = line.Split(',').Select(int.Parse).ToArray();
+			X = tokens[0];
+			Y = tokens[1];
+            base.ParseFromLine(line);
+        }
+    }
 }
